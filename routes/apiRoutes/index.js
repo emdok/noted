@@ -1,40 +1,34 @@
 const router = require("express").Router();
-const fs = require('fs');
-const path = require('path');
-const { createNote, findById } = require('../../lib/notes');
-const { notes } = require("../../db/db.json");
-
-const updateNotes = () => {
-
-}
-
+const fs = require("fs");
+const path = require("path");
+const { createNote, findById } = require("../../lib/notes");
+let { notes } = require("../../db/db.json");
 
 router.get("/notes", (req, res) => {
-    if (!notes.length) {
-        res.status(204).json("Notes not available");
-    } else {
-        res.json(notes);
-    }
-    
+  if (!notes.length) {
+    res.status(204).json("Notes not available");
+  } else {
+    res.json(notes);
+  }
 });
 
 router.post("/notes", (req, res) => {
-    const note = createNote(req.body, notes);
-    res.json(note);
+  const note = createNote(req.body, notes);
+  res.json(note);
 });
 
 router.delete("/notes/:id", (req, res) => {
-    console.log("delete route called")
-    const noteToRemove = findById(req.params.id, notes);
+  console.log("delete route called");
+  notes = findById(req.params.id, notes);
 
-    const result = notes.filter(note => note !== noteToRemove)
-    
-    console.log(result);
+  console.log(notes);
 
-    fs.writeFileSync(
-        path.join(__dirname, '../../db/db.json'),
-        JSON.stringify({ notes: result }, null, 2)
-    );
+  fs.writeFileSync("./db/db.json",
+    JSON.stringify({ notes }, null, 2)
+  );
+
+  res.json(notes);
+
 });
 
 module.exports = router;

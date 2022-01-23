@@ -1,24 +1,14 @@
 {
   "notes": [
     {
-      "title": "This is a new note",
-      "text": "Hello",
-      "id": "sktwi3sskypb0eaj"
+      "title": "Note 2",
+      "text": "This is note 2",
+      "id": "3508oo5ngkyqudb17"
     },
     {
-      "title": "Note 4",
-      "text": "This is note 4",
-      "id": "3508oo5bwkypfvk1u"
-    },
-    {
-      "title": "This is a new note",
-      "text": "Hello",
-      "id": "3508oo4vzkyqsshwa"
-    },
-    {
-      "title": "asdfas",
-      "text": "asdf",
-      "id": "3508oo4yikyqsuuoi"
+      "title": "Note 3",
+      "text": "This is note 3",
+      "id": "3508oo5ngkyqudi00"
     }
   ]
 }

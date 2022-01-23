@@ -3,17 +3,22 @@ const fs = require('fs');
 const path = require('path');
 const { createNote, findById } = require('../../lib/notes');
 const { notes } = require("../../db/db.json");
-var uniqid = require('uniqid'); 
+
+const updateNotes = () => {
+
+}
 
 
 router.get("/notes", (req, res) => {
-    res.json(notes);
+    if (!notes.length) {
+        res.status(204).json("Notes not available");
+    } else {
+        res.json(notes);
+    }
+    
 });
 
 router.post("/notes", (req, res) => {
-    const noteId = uniqid().toString();
-    req.body.id = noteId;
-
     const note = createNote(req.body, notes);
     res.json(note);
 });

@@ -4,6 +4,7 @@ const path = require("path");
 const { createNote, findById } = require("../../lib/notes");
 let { notes } = require("../../db/db.json");
 
+// GET existing notes
 router.get("/notes", (req, res) => {
   if (!notes.length) {
     res.status(204).json("Notes not available");
@@ -12,6 +13,7 @@ router.get("/notes", (req, res) => {
   }
 });
 
+// POST a new note
 router.post("/notes", (req, res) => {
 
     if (req.body.title.length > 0 && req.body.text.length > 0) {
@@ -23,6 +25,7 @@ router.post("/notes", (req, res) => {
 
 });
 
+// Delete a note and update note list
 router.delete("/notes/:id", (req, res) => {
     if (req.params.id.length > 0) {
 

@@ -25,7 +25,7 @@ router.post("/notes", (req, res) => {
 
 router.delete("/notes/:id", (req, res) => {
     if (req.params.id.length > 0) {
-        console.log("delete route called");
+
         notes = findById(req.params.id, notes);
       
         console.log(notes);
